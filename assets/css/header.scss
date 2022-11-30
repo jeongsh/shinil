@@ -1,0 +1,397 @@
+header {
+    z-index: 8888;
+    position: fixed;
+    left: 0;
+    top: 0;
+    transition: .3s ease-in-out all;
+    &.up{
+        transform: matrix(1, 0, 0, 1, 0, -97);
+    }
+    &.active {
+        .gnb {
+            border-bottom: 1px solid #ddd;
+        }
+    }
+
+    .gnb {
+        background: #fff;
+        transition: 0.3s;
+        .navCont {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 96px;
+
+            &>div {
+                width: 20%;
+
+                &:nth-child(3) {
+                    display: flex;
+                    justify-content: flex-end;
+                }
+            }
+
+            .logo {
+                z-index: 9999;
+            }
+        }
+
+        .nav-outer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            width: 60%;
+
+            &>li {
+                padding: 0 23px;
+                font-size: 18px;
+                font-weight: 700;
+                height: 100%;
+
+                a {
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    position: relative;
+
+                    &::before {
+                        content: "";
+                        width: 0;
+                        height: 2px;
+                        bottom: 0;
+                        position: absolute;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        background: #000;
+                        transition: 0.5s;
+                    }
+                }
+
+                &.active, &.on {
+                    a {
+                        &::before {
+                            content: "";
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
+
+        .menuButton {
+            position: relative;
+            width: 26px;
+            height: 26px;
+            z-index: 9999;
+
+            div {
+                background: #000333;
+                height: 2px;
+                width: 26px;
+                position: absolute;
+
+                &:nth-child(1) {
+                    top: 3px;
+                    transition: top 0.3s 0.2s, transform 0.2s;
+                }
+
+                &:nth-child(2) {
+                    top: 50%;
+                    transform: translateY(-50%);
+                    transition: 0.5s;
+                }
+
+                &:nth-child(3) {
+                    bottom: 3px;
+                    transition: bottom 0.3s 0.2s, transform 0.2s;
+                }
+            }
+
+            &.active {
+                div {
+                    &:nth-child(1) {
+                        top: 50%;
+                        transform: translateY(-50%) rotate(45deg);
+                        transition: top 0.3s, transform 0.2s 0.3s;
+                    }
+
+                    &:nth-child(2) {
+                        opacity: 0;
+                        visibility: hidden;
+                    }
+
+                    &:nth-child(3) {
+                        bottom: 50%;
+                        transform: translateY(50%) rotate(-45deg);
+                        transition: bottom 0.3s, transform 0.2s 0.3s;
+                    }
+                }
+            }
+        }
+    }
+
+    .nav-inner {
+        width: 100vw;
+        z-index: 8888;
+        position: relative;
+        height: 0;
+        background: #fff;
+        transition: .3s ease-in-out all;
+
+        .inner-cont {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            position: absolute;
+            width: 100%;
+            transition: .3s ease-in-out all;
+            height: 100%;
+            transform: translateY(30%);
+
+            .subMenu {
+                display: flex;
+
+                li {
+                    margin-right: 18px;
+                    padding: 0 23px;
+
+                    a {
+                        font-size: 18px;
+                        font-weight: 700;
+                    }
+                }
+            }
+
+            &.active, &.on {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0%);
+            }
+        }
+
+        &.active {
+            opacity: 1;
+            visibility: visible;
+            height: 73px;
+            border-bottom: 1px solid #ddd;
+        }
+    }
+
+    .menuPage {
+        width: 100vw;
+        height: 100vh;
+        background: #fff;
+        position: absolute;
+        left: 0;
+        top: 0;
+        transform: translateX(100%);
+        z-index: 9000;
+        transition: 0.85s cubic-bezier(0.645, 0.045, 0.355, 1);
+
+        &.active {
+            transform: translateX(0);
+        }
+
+        .menuWrapper {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .left {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            border-right: 1px solid #e5e5e5;
+            box-sizing: border-box;
+        }
+
+        .right {
+            width: calc(100% - 840px);
+            height: 100%;
+            position: relative;
+
+            img {
+                position: absolute;
+                right: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                opacity: 0;
+                visibility: hidden;
+                transition: 0.5s;
+
+                &.active {
+                    opacity: 1;
+                    visibility: visible;
+                }
+            }
+        }
+
+        .m1 {
+            width: 480px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+
+            &::before {
+                content: "";
+                right: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 1px;
+                background: #e5e5e5;
+                height: 0%;
+                position: absolute;
+                transition: 0.5s;
+            }
+
+            &.active {
+                &::before {
+                    height: 100%;
+                }
+            }
+
+            li {
+                cursor: pointer;
+                font-size: 42px;
+                font-weight: 600;
+                position: relative;
+                padding: 15px 30px;
+                opacity: 0.3;
+                transition: 0.5s;
+
+                &::before {
+                    content: "";
+                    width: 8px;
+                    height: 8px;
+                    border-radius: 50%;
+                    background: #000;
+                    position: absolute;
+                    left: 16px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    opacity: 0;
+                    visibility: hidden;
+                    transition: 0.5s;
+                }
+
+                &:hover {
+                    &::before {
+                        opacity: 1;
+                        visibility: visible;
+                        left: 0;
+                    }
+                }
+
+                &.active {
+                    opacity: 1;
+                }
+
+                &.on {
+                    opacity: 1;
+
+                    &::before {
+                        opacity: 1;
+                        visibility: visible;
+                        left: 0;
+                    }
+                }
+            }
+        }
+
+        .m2 {
+            width: 360px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            ul {
+                opacity: 0;
+                visibility: hidden;
+                position: absolute;
+                height: 480px;
+                transition: 0.5s;
+
+                li {
+                    padding: 15px 0;
+
+                    a {
+                        padding-left: 25px;
+                        display: block;
+                        position: relative;
+                        font-size: 24px;
+                        font-weight: 300;
+                        transition: 0.3s;
+
+                        &::before {
+                            content: "";
+                            width: 3px;
+                            height: 0;
+                            position: absolute;
+                            left: 0;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            background: #000;
+                            transition: 0.3s;
+                        }
+
+                        &:hover {
+                            font-weight: 600;
+
+                            &::before {
+                                height: 100%;
+                            }
+                        }
+                    }
+                }
+
+                &.active {
+                    display: block;
+                    opacity: 1;
+                    visibility: visible;
+                }
+            }
+        }
+    }
+
+    &.on {
+        .gnb {
+            background: none;
+
+            .nav-outer>li a {
+                color: #fff;
+            }
+
+            .menuButton {
+                div {
+                    background: #fff;
+                }
+            }
+        }
+
+        .nav-inner {
+            background: none;
+
+            .inner-cont .subMenu li a {
+                color: #fff;
+            }
+        }
+
+        .menuButton {
+            &.active {
+                div {
+                    background: #000;
+                }
+            }
+        }
+
+    }
+
+}

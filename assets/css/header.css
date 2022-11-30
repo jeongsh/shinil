@@ -1,0 +1,319 @@
+header {
+  z-index: 8888;
+  position: fixed;
+  left: 0;
+  top: 0;
+  transition: 0.3s ease-in-out all;
+}
+header.up {
+  transform: matrix(1, 0, 0, 1, 0, -97);
+}
+header.active .gnb {
+  border-bottom: 1px solid #ddd;
+}
+header .gnb {
+  background: #fff;
+  transition: 0.3s;
+}
+header .gnb .navCont {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 96px;
+}
+header .gnb .navCont > div {
+  width: 20%;
+}
+header .gnb .navCont > div:nth-child(3) {
+  display: flex;
+  justify-content: flex-end;
+}
+header .gnb .navCont .logo {
+  z-index: 9999;
+}
+header .gnb .nav-outer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 60%;
+}
+header .gnb .nav-outer > li {
+  padding: 0 23px;
+  font-size: 18px;
+  font-weight: 700;
+  height: 100%;
+}
+header .gnb .nav-outer > li a {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+header .gnb .nav-outer > li a::before {
+  content: "";
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #000;
+  transition: 0.5s;
+}
+header .gnb .nav-outer > li.active a::before, header .gnb .nav-outer > li.on a::before {
+  content: "";
+  width: 100%;
+}
+header .gnb .menuButton {
+  position: relative;
+  width: 26px;
+  height: 26px;
+  z-index: 9999;
+}
+header .gnb .menuButton div {
+  background: #000333;
+  height: 2px;
+  width: 26px;
+  position: absolute;
+}
+header .gnb .menuButton div:nth-child(1) {
+  top: 3px;
+  transition: top 0.3s 0.2s, transform 0.2s;
+}
+header .gnb .menuButton div:nth-child(2) {
+  top: 50%;
+  transform: translateY(-50%);
+  transition: 0.5s;
+}
+header .gnb .menuButton div:nth-child(3) {
+  bottom: 3px;
+  transition: bottom 0.3s 0.2s, transform 0.2s;
+}
+header .gnb .menuButton.active div:nth-child(1) {
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+  transition: top 0.3s, transform 0.2s 0.3s;
+}
+header .gnb .menuButton.active div:nth-child(2) {
+  opacity: 0;
+  visibility: hidden;
+}
+header .gnb .menuButton.active div:nth-child(3) {
+  bottom: 50%;
+  transform: translateY(50%) rotate(-45deg);
+  transition: bottom 0.3s, transform 0.2s 0.3s;
+}
+header .nav-inner {
+  width: 100vw;
+  z-index: 8888;
+  position: relative;
+  height: 0;
+  background: #fff;
+  transition: 0.3s ease-in-out all;
+}
+header .nav-inner .inner-cont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  width: 100%;
+  transition: 0.3s ease-in-out all;
+  height: 100%;
+  transform: translateY(30%);
+}
+header .nav-inner .inner-cont .subMenu {
+  display: flex;
+}
+header .nav-inner .inner-cont .subMenu li {
+  margin-right: 18px;
+  padding: 0 23px;
+}
+header .nav-inner .inner-cont .subMenu li a {
+  font-size: 18px;
+  font-weight: 700;
+}
+header .nav-inner .inner-cont.active, header .nav-inner .inner-cont.on {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0%);
+}
+header .nav-inner.active {
+  opacity: 1;
+  visibility: visible;
+  height: 73px;
+  border-bottom: 1px solid #ddd;
+}
+header .menuPage {
+  width: 100vw;
+  height: 100vh;
+  background: #fff;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translateX(100%);
+  z-index: 9000;
+  transition: 0.85s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+header .menuPage.active {
+  transform: translateX(0);
+}
+header .menuPage .menuWrapper {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+header .menuPage .left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  border-right: 1px solid #e5e5e5;
+  box-sizing: border-box;
+}
+header .menuPage .right {
+  width: calc(100% - 840px);
+  height: 100%;
+  position: relative;
+}
+header .menuPage .right img {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.5s;
+}
+header .menuPage .right img.active {
+  opacity: 1;
+  visibility: visible;
+}
+header .menuPage .m1 {
+  width: 480px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+header .menuPage .m1::before {
+  content: "";
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  background: #e5e5e5;
+  height: 0%;
+  position: absolute;
+  transition: 0.5s;
+}
+header .menuPage .m1.active::before {
+  height: 100%;
+}
+header .menuPage .m1 li {
+  cursor: pointer;
+  font-size: 42px;
+  font-weight: 600;
+  position: relative;
+  padding: 15px 30px;
+  opacity: 0.3;
+  transition: 0.5s;
+}
+header .menuPage .m1 li::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #000;
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.5s;
+}
+header .menuPage .m1 li:hover::before {
+  opacity: 1;
+  visibility: visible;
+  left: 0;
+}
+header .menuPage .m1 li.active {
+  opacity: 1;
+}
+header .menuPage .m1 li.on {
+  opacity: 1;
+}
+header .menuPage .m1 li.on::before {
+  opacity: 1;
+  visibility: visible;
+  left: 0;
+}
+header .menuPage .m2 {
+  width: 360px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+header .menuPage .m2 ul {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  height: 480px;
+  transition: 0.5s;
+}
+header .menuPage .m2 ul li {
+  padding: 15px 0;
+}
+header .menuPage .m2 ul li a {
+  padding-left: 25px;
+  display: block;
+  position: relative;
+  font-size: 24px;
+  font-weight: 300;
+  transition: 0.3s;
+}
+header .menuPage .m2 ul li a::before {
+  content: "";
+  width: 3px;
+  height: 0;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #000;
+  transition: 0.3s;
+}
+header .menuPage .m2 ul li a:hover {
+  font-weight: 600;
+}
+header .menuPage .m2 ul li a:hover::before {
+  height: 100%;
+}
+header .menuPage .m2 ul.active {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+}
+header.on .gnb {
+  background: none;
+}
+header.on .gnb .nav-outer > li a {
+  color: #fff;
+}
+header.on .gnb .menuButton div {
+  background: #fff;
+}
+header.on .nav-inner {
+  background: none;
+}
+header.on .nav-inner .inner-cont .subMenu li a {
+  color: #fff;
+}
+header.on .menuButton.active div {
+  background: #000;
+}
