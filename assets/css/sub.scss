@@ -46,11 +46,11 @@
         top: 240px;
         z-index: 100;
 
-        &.active {
-            position: absolute;
-            top: calc(50vh + 360px);
-            left: calc((100vw - 1400px)/2);
-        }
+        // &.active {
+        //     position: absolute;
+        //     top: calc(50vh + 360px);
+        //     left: calc((100vw - 1400px)/2);
+        // }
     }
 }
 
@@ -321,7 +321,7 @@
     .category{
         display: flex;
         margin-bottom: 20px;
-        li{   
+        li{
             margin-right: 21px;
             position: relative;
             button{
